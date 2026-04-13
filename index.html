@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Marco Sansone | Coach Pubblicitario</title>
+  <meta name="description" content="Costruisco sistemi pubblicitari che portano clienti, ordine e crescita." />
+  <style>
+    :root {
+      --bg: #071120;
+      --bg-2: #0c1830;
+      --card: #101d36;
+      --card-soft: #f6f3ee;
+      --text: #f8fafc;
+      --muted: #cbd5e1;
+      --dark: #0b1220;
+      --gold: #e0ad3d;
+      --gold-dark: #c79429;
+      --line: rgba(255,255,255,0.08);
+      --radius: 20px;
+      --shadow: 0 18px 50px rgba(0,0,0,.22);
+      --max: 1180px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f4f1ec;
+      color: #111827;
+      line-height: 1.55;
+    }
+
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+
+    .container {
+      width: min(92%, var(--max));
+      margin: 0 auto;
+    }
+
+    .site-shell {
+      background: var(--bg);
+      color: var(--text);
+    }
+
+    .topbar {
+      background: var(--bg);
+      border-bottom: 1px solid rgba(255,255,255,.06);
+      position: sticky;
+      top: 0;
+      z-index: 20;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 14px 0;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .brand-mark {
+      background: var(--gold);
+      color: #111;
+      padding: 6px 9px;
+      border-radius: 8px;
+      font-weight: 800;
+      line-height: 1;
+    }
+
+    .brand small {
+      display: block;
+      color: #d6dee8;
+      font-size: 0.78rem;
+      font-weight: 600;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      color: #e8edf5;
+      font-size: 0.95rem;
+    }
+
+    .nav-links a:hover { color: var(--gold); }
+
+    .btn {
+      display: inline-block;
+      padding: 13px 20px;
+      border-radius: 999px;
+      font-weight: 700;
+      transition: .2s ease;
+    }
+
+    .btn-primary {
+      background: var(--gold);
+      color: #111;
+    }
+
+    .btn-primary:hover { background: var(--gold-dark); }
+
+    .btn-secondary {
+      border: 1px solid rgba(255,255,255,.18);
+      color: #fff;
+      background: rgba(255,255,255,.04);
+    }
+
+    .hero {
+      padding: 34px 0 0;
+      background: linear-gradient(180deg, #071120 0%, #0a1730 100%);
+    }
+
+    .hero-panel {
+      display: grid;
+      grid-template-columns: 1.08fr 0.92fr;
+      gap: 24px;
+      align-items: center;
+      padding: 24px 0 34px;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(224,173,61,.16);
+      color: #ffd879;
+      font-size: .78rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      margin: 0 0 12px;
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      line-height: .98;
+      letter-spacing: -1.3px;
+    }
+
+    .highlight { color: var(--gold); }
+
+    .lead {
+      max-width: 680px;
+      color: #d5dde8;
+      font-size: 1.08rem;
+      margin-bottom: 24px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .hero-visual {
+      position: relative;
+      min-height: 520px;
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      background: #0f1b31;
+    }
+
+    .hero-visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, rgba(5,12,24,.22) 0%, rgba(5,12,24,.06) 40%, rgba(5,12,24,.05) 100%);
+    }
+
+    .metrics {
+      border-top: 1px solid rgba(255,255,255,.08);
+      border-bottom: 1px solid rgba(255,255,255,.08);
+      background: #081427;
+    }
+
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+    }
+
+    .metric {
+      padding: 24px 22px;
+      border-right: 1px solid rgba(255,255,255,.08);
+    }
+
+    .metric:last-child { border-right: 0; }
+
+    .metric strong {
+      display: block;
+      color: var(--gold);
+      font-size: 1.25rem;
+      margin-bottom: 6px;
+    }
+
+    .metric span {
+      color: #d6deea;
+      font-size: .94rem;
+    }
+
+    .light-section {
+      background: #f4f1ec;
+      color: #111827;
+      padding: 72px 0;
+    }
+
+    .dark-section {
+      background: linear-gradient(180deg, #081427, #0a1730);
+      color: #fff;
+      padding: 68px 0;
+    }
+
+    .section-head {
+      margin-bottom: 28px;
+    }
+
+    .section-kicker {
+      color: var(--gold-dark);
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      font-size: .8rem;
+      margin-bottom: 8px;
+      display: inline-block;
+    }
+
+    h2 {
+      margin: 0 0 10px;
+      font-size: clamp(2rem, 4vw, 3.1rem);
+      line-height: 1.02;
+      letter-spacing: -.8px;
+    }
+
+    .section-sub {
+      max-width: 780px;
+      color: #4b5563;
+    }
+
+    .dark-section .section-sub { color: #d9e2ee; }
+
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3,1fr); gap: 22px; }
+    .grid-4 { display: grid; grid-template-columns: repeat(4,1fr); gap: 20px; }
+
+    .card {
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .card-light {
+      background: #fff;
+      padding: 26px;
+      border: 1px solid rgba(17,24,39,.06);
+    }
+
+    .card-dark {
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.08);
+      padding: 24px;
+    }
+
+    .who-wrap {
+      align-items: center;
+    }
+
+    .quote-sign {
+      margin-top: 20px;
+      font-style: italic;
+      font-weight: 700;
+      font-size: 1.1rem;
+    }
+
+    .image-card {
+      overflow: hidden;
+      border-radius: 24px;
+      box-shadow: var(--shadow);
+      background: #fff;
+    }
+
+    .image-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      min-height: 360px;
+    }
+
+    .service-card h3,
+    .partner-card h3,
+    .study-card h3,
+    .blog-card h3 {
+      margin-top: 0;
+      margin-bottom: 10px;
+    }
+
+    .service-card p,
+    .partner-card p,
+    .study-card p,
+    .blog-card p,
+    .card-light p,
+    .card-dark p {
+      margin: 0;
+      color: #4b5563;
+    }
+
+    .dark-section .card-dark p,
+    .dark-section .partner-card p { color: #d5deea; }
+
+    .steps-row {
+      display: grid;
+      grid-template-columns: 1.15fr repeat(4, 1fr);
+      gap: 24px;
+      align-items: start;
+    }
+
+    .step-box {
+      color: #fff;
+    }
+
+    .step-box .n {
+      color: var(--gold);
+      font-size: 2rem;
+      font-weight: 800;
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    .step-box h3 {
+      margin: 0 0 8px;
+      font-size: 1.05rem;
+    }
+
+    .step-box p { color: #d6dfeb; margin: 0; }
+
+    .case-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 1fr 1fr 1fr;
+      gap: 22px;
+      align-items: stretch;
+    }
+
+    .case-main {
+      padding: 4px 0;
+    }
+
+    .case-main p { color: #4b5563; max-width: 520px; }
+
+    .study-card {
+      background: #fff;
+      padding: 22px;
+      border-radius: 20px;
+      border: 1px solid rgba(17,24,39,.06);
+      box-shadow: 0 10px 30px rgba(0,0,0,.08);
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: #f7ebc8;
+      color: #806017;
+      font-size: .75rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      margin-bottom: 12px;
+    }
+
+    .study-kpi {
+      font-size: 2rem;
+      font-weight: 800;
+      line-height: 1;
+      margin-bottom: 8px;
+      color: #111827;
+    }
+
+    .partner-band {
+      background: linear-gradient(180deg, #081427 0%, #09162a 100%);
+      color: #fff;
+      padding: 68px 0;
+    }
+
+    .partner-layout {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr 1fr;
+      gap: 22px;
+      align-items: start;
+    }
+
+    .partner-intro p { color: #d6deea; }
+
+    .partner-card {
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 20px;
+      padding: 20px;
+    }
+
+    .partner-top {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 14px;
+    }
+
+    .partner-top img {
+      width: 72px;
+      height: 72px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 3px solid rgba(255,255,255,.08);
+    }
+
+    .mini-link {
+      display: inline-block;
+      margin-top: 14px;
+      color: var(--gold);
+      font-weight: 700;
+    }
+
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .blog-card {
+      background: #fff;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,.08);
+      border: 1px solid rgba(17,24,39,.06);
+    }
+
+    .blog-card img {
+      width: 100%;
+      height: 190px;
+      object-fit: cover;
+    }
+
+    .blog-card .content {
+      padding: 20px;
+    }
+
+    .cta-section {
+      background: linear-gradient(90deg, #081427 0%, #0a1730 100%);
+      color: #fff;
+      padding: 64px 0;
+    }
+
+    .cta-box {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 26px;
+      align-items: center;
+    }
+
+    .cta-media {
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .cta-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      min-height: 290px;
+    }
+
+    .footer {
+      background: #071120;
+      color: #cdd7e4;
+      padding: 26px 0;
+      font-size: .92rem;
+      border-top: 1px solid rgba(255,255,255,.06);
+    }
+
+    @media (max-width: 1080px) {
+      .hero-panel,
+      .grid-2,
+      .steps-row,
+      .case-grid,
+      .partner-layout,
+      .cta-box,
+      .grid-3,
+      .blog-grid,
+      .metrics-grid { grid-template-columns: 1fr; }
+
+      .metric { border-right: 0; border-bottom: 1px solid rgba(255,255,255,.08); }
+      .metric:last-child { border-bottom: 0; }
+    }
+
+    @media (max-width: 760px) {
+      .nav { flex-direction: column; align-items: flex-start; }
+      .nav-links { gap: 12px; }
+      .hero { padding-top: 20px; }
+      h1 { font-size: 2.4rem; }
+      .hero-visual { min-height: 360px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="site-shell">
+    <header class="topbar">
+      <div class="container nav">
+        <div class="brand">
+          <span class="brand-mark">MS</span>
+          <div>
+            Marco Sansone
+            <small>Coach Pubblicitario</small>
+          </div>
+        </div>
+        <nav class="nav-links">
+          <a href="#home">Home</a>
+          <a href="#chi-sono">Chi sono</a>
+          <a href="#servizi">Servizi</a>
+          <a href="#metodo">Metodo</a>
+          <a href="#casi-studio">Casi studio</a>
+          <a href="#partner">Partner</a>
+          <a href="https://calendar.app.google/18FPP7MGoMMRws576" target="_blank">Contatti</a>
+          <a href="https://calendar.app.google/18FPP7MGoMMRws576" target="_blank" class="btn btn-primary">Analizziamo il tuo sistema</a>
+        </nav>
+      </div>
+    </header>
+
+    <section class="hero" id="home">
+      <div class="container hero-panel">
+        <div>
+          <span class="eyebrow">Coach Pubblicitario</span>
+          <h1>Costruisco sistemi pubblicitari che portano <span class="highlight">clienti, ordine e crescita.</span></h1>
+          <p class="lead">
+            Aiuto imprenditori e professionisti a smettere di sprecare budget e a costruire un sistema commerciale più chiaro, misurabile e profittevole. Ti affianco come coach e, quando serve, attivo anche la parte operativa per far funzionare davvero il sistema.
+          </p>
+          <div class="hero-actions">
+            <a href="https://calendar.app.google/18FPP7MGoMMRws576" target="_blank" class="btn btn-primary">Analizziamo il tuo sistema in 30 minuti</a>
+            <a href="#metodo" class="btn btn-secondary">Scopri il metodo</a>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <img src="hero.png" alt="Marco Sansone coach pubblicitario" />
+          <div class="hero-overlay"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="metrics">
+      <div class="container metrics-grid">
+        <div class="metric">
+          <strong>25+ anni</strong>
+          <span>di esperienza tra advertising, vendita e acquisizione clienti.</span>
+        </div>
+        <div class="metric">
+          <strong>Sistemi reali</strong>
+          <span>costruiti su casi e contesti concreti, non su teoria.</span>
+        </div>
+        <div class="metric">
+          <strong>KPI e numeri</strong>
+          <span>per leggere i risultati e correggere gli errori.</span>
+        </div>
+        <div class="metric">
+          <strong>Meno sprechi</strong>
+          <span>più controllo, più tempo, più risultati nel tempo.</span>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <section class="light-section" id="chi-sono">
+    <div class="container grid-2 who-wrap">
+      <div>
+        <span class="section-kicker">Chi sono</span>
+        <h2>Non ti porto teoria. <span class="highlight">Ti aiuto a leggere i numeri, correggere gli errori e migliorare il sistema.</span></h2>
+        <p class="section-sub">
+          Sono Marco Sansone, coach pubblicitario. Da oltre 25 anni aiuto imprenditori, professionisti e titolari di attività ad acquisire clienti, organizzare meglio il processo commerciale e migliorare le performance nel tempo.
+        </p>
+        <p class="section-sub">
+          Non sono un’agenzia tradizionale e non sono nemmeno il classico consulente che lascia teoria e se ne va. Entro nel contesto, individuo i colli di bottiglia, definisco le priorità e costruisco un sistema più efficace.
+        </p>
+        <div class="quote-sign">Marco Sansone</div>
+      </div>
+      <div class="image-card">
+        <img src="formazione.jpg" alt="Marco Sansone in formazione" />
+      </div>
+    </div>
+  </section>
+
+  <section class="light-section" id="servizi" style="padding-top: 0;">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-kicker">Servizi</span>
+        <h2>Cosa posso fare <span class="highlight">per te.</span></h2>
+        <p class="section-sub">Soluzioni concrete per imprenditori e professionisti che vogliono più struttura, più controllo e più risultati.</p>
+      </div>
+      <div class="grid-3">
+        <div class="card card-light service-card">
+          <h3>Coaching pubblicitario 1:1</h3>
+          <p>Analisi, direzione e correzione per migliorare budget, messaggi e rendimento.</p>
+        </div>
+        <div class="card card-light service-card">
+          <h3>Strategia e ottimizzazione</h3>
+          <p>Costruiamo un sistema più chiaro per acquisire lead, gestirli meglio e trasformarli in clienti.</p>
+        </div>
+        <div class="card card-light service-card">
+          <h3>Formazione e affiancamento</h3>
+          <p>Alleno te e il team a lavorare con più struttura, più controllo e meno dispersione.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="dark-section" id="metodo">
+    <div class="container steps-row">
+      <div>
+        <span class="section-kicker" style="color:#ffd879;">Metodo</span>
+        <h2>Un metodo che funziona.</h2>
+        <p class="section-sub">Nessuna teoria inutile. Analisi, direzione, esecuzione e ottimizzazione continua.</p>
+      </div>
+      <div class="step-box">
+        <span class="n">01</span>
+        <h3>Analizzo</h3>
+        <p>Studio business, numeri, posizionamento e margini di miglioramento.</p>
+      </div>
+      <div class="step-box">
+        <span class="n">02</span>
+        <h3>Progetto</h3>
+        <p>Definiamo obiettivi, priorità e strategia su misura.</p>
+      </div>
+      <div class="step-box">
+        <span class="n">03</span>
+        <h3>Eseguo</h3>
+        <p>Mettiamo a terra campagne, contenuti, automazioni e organizzazione.</p>
+      </div>
+      <div class="step-box">
+        <span class="n">04</span>
+        <h3>Ottimizzo</h3>
+        <p>Correggiamo, misuriamo e miglioriamo i risultati nel tempo.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="light-section" id="casi-studio">
+  <div class="container">
+
+    <div class="section-head">
+      <span class="section-kicker">Casi studio</span>
+      <h2>Risultati reali per <span class="highlight">professionisti sanitari</span> e non solo.</h2>
+      <p class="section-sub">
+        Una parte importante del mio lavoro oggi è aiutare medici, cliniche e professionisti della salute a costruire sistemi per acquisire pazienti in modo strutturato. 
+        Lo stesso approccio viene poi applicato anche ad altri contesti ad alta consulenza.
+      </p>
+    </div>
+
+    <!-- BLOCCO MEDICAL (70%) -->
+    <div class="grid-3" style="margin-bottom:20px;">
+
+      <div class="study-card">
+        <span class="tag">Sanitario</span>
+        <div class="study-kpi">+ studi</div>
+        <h3>Chirurgo → espansione multi-sede</h3>
+        <p>
+          Da attività limitata a più studi in diverse città grazie a un sistema strutturato di acquisizione pazienti, gestione contatti e monitoraggio KPI.
+        </p>
+      </div>
+
+      <div class="study-card">
+        <span class="tag">Sanitario</span>
+        <div class="study-kpi">Online</div>
+        <h3>Clinica → presenza digitale completa</h3>
+        <p>
+          Da assente online a struttura riconosciuta: acquisizione pazienti, SEO, GEO e customer service digitale integrato.
+        </p>
+      </div>
+
+      <div class="study-card">
+        <span class="tag">Sanitario</span>
+        <div class="study-kpi">Costante</div>
+        <h3>Nutrizionista → flusso continuo</h3>
+        <p>
+          Con contenuti e ads semplici: 3–5 contatti al giorno e nuovi clienti ogni mese con budget minimo.
+        </p>
+      </div>
+
+    </div>
+
+    <!-- CTA MEDICAL -->
+    <div style="text-align:center; margin-bottom:50px;">
+      <p style="margin-bottom:15px; font-weight:600;">
+        Lavoro sempre più spesso con medici e professionisti sanitari che vogliono più pazienti e un sistema organizzato.
+      </p>
+      <a href="https://calendar.app.google/18FPP7MGoMMRws576" target="_blank" class="btn btn-primary">Prenota un confronto per il tuo studio o la tua struttura</a>
+    </div>
+
+    <!-- BLOCCO TRASVERSALE (30%) -->
+    <div class="grid-4">
+
+      <div class="study-card">
+        <span class="tag">Business</span>
+        <h3>Parrucchiera → alto margine</h3>
+        <p>Trasformazione del modello: 90% clienti alto valore e crescita costante.</p>
+      </div>
+
+      <div class="study-card">
+        <span class="tag">Coaching</span>
+        <h3>Hair coach → qualità lead</h3>
+        <p>Pochi contatti ma giusti: 100% chiusura e clienti ad alto valore.</p>
+      </div>
+
+      <div class="study-card">
+        <span class="tag">Attivazione</span>
+        <h3>Ballerino → open day</h3>
+        <p>Da 0 a 70 iscritti con contenuti e attivazione della community.</p>
+      </div>
+
+      <div class="study-card">
+        <span class="tag">Ottimizzazione</span>
+        <h3>Azienda aeroporti</h3>
+        <p>Da 40€ a 1–6€ per lead migliorando targeting e strategia.</p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+  <section class="partner-band" id="partner">
+    <div class="container partner-layout">
+      <div class="partner-intro">
+        <span class="section-kicker" style="color:#ffd879;">Partner</span>
+        <h2>Professionisti selezionati. <span class="highlight">Risultati condivisi.</span></h2>
+        <p>Quando serve, attivo direttamente le persone giuste per costruire o migliorare il tuo sistema. Partner selezionati che condividono il mio standard: meno confusione, più direzione, più controllo. Resti seguito da un unico riferimento con competenze specifiche integrate nel sistema.</p>
+        <a href="https://calendar.app.google/18FPP7MGoMMRws576" target="_blank" class="btn btn-secondary" style="margin-top:16px;">Scopri come lavoriamo</a>
+      </div>
+      <div class="partner-card">
+        <div class="partner-top">
+          <img src="hero.png" alt="Partner area performance" />
+          <div>
+            <strong>Creazione e gestione sistemi di vendita</strong><br>
+            <small>Siti, funnel, e-commerce</small>
+          </div>
+        </div>
+        <p>Creazione, aggiornamento e manutenzione di siti ed e-commerce. Ottimizzazione delle performance, velocità e struttura per vendere meglio online.</p>
+        <span class="mini-link">Sviluppo e ottimizzazione →</span>
+      </div>
+      <div class="partner-card">
+        <div class="partner-top">
+          <img src="formazione.jpg" alt="Partner area crescita" />
+          <div>
+            <strong>Visibilità e presenza online</strong><br>
+            <small>SEO e GEO</small>
+          </div>
+        </div>
+        <p><strong>SEO:</strong> fatti trovare da chi ti cerca su Google.<br>
+        <strong>GEO:</strong> fatti trovare anche sulle nuove piattaforme come ChatGPT, Gemini e altre AI.</p>
+        <span class="mini-link">Crescita e visibilità →</span>
+      </div>
+    </div>
+  </section>
+
+  
+
+  <section class="cta-section" id="contatti">
+    <div class="container cta-box">
+      <div>
+        <span class="section-kicker" style="color:#ffd879;">Contatti</span>
+        <h2>Hai già campagne, strumenti o persone operative, ma il sistema non gira come dovrebbe?</h2>
+        <p class="section-sub" style="color:#d8e2ee;">
+          Analizziamolo insieme in 30 minuti e capiamo dove stai perdendo tempo, margine o opportunità. Poi decidiamo se e come intervenire.
+        </p>
+        <a href="https://calendar.app.google/18FPP7MGoMMRws576" target="_blank" class="btn btn-primary">Analizziamo il tuo sistema in 30 minuti</a>
+      </div>
+      <div class="cta-media">
+        <img src="hero.png" alt="Marco Sansone consulenza strategica" />
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      Marco Sansone — Coach Pubblicitario · Strategia, struttura, acquisizione clienti e supporto operativo quando serve.
+    </div>
+  </footer>
+</body>
+</html>
