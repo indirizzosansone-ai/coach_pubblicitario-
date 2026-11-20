@@ -5,542 +5,117 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Marco Sansone | Coach Pubblicitario</title>
   <meta name="description" content="Costruisco sistemi pubblicitari che portano clienti, ordine e crescita." />
-  <style>
-    :root {
-      --bg: #071120;
-      --bg-2: #0c1830;
-      --card: #101d36;
-      --card-soft: #f6f3ee;
-      --text: #f8fafc;
-      --muted: #cbd5e1;
-      --dark: #0b1220;
-      --gold: #e0ad3d;
-      --gold-dark: #c79429;
-      --line: rgba(255,255,255,0.08);
-      --radius: 20px;
-      --shadow: 0 18px 50px rgba(0,0,0,.22);
-      --max: 1180px;
-    }
-
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      background: #f4f1ec;
-      color: #111827;
-      line-height: 1.55;
-    }
-
-    img { max-width: 100%; display: block; }
-    a { color: inherit; text-decoration: none; }
-
-    .container {
-      width: min(92%, var(--max));
-      margin: 0 auto;
-    }
-
-    .site-shell {
-      background: var(--bg);
-      color: var(--text);
-    }
-
-    .topbar {
-      background: var(--bg);
-      border-bottom: 1px solid rgba(255,255,255,.06);
-      position: sticky;
-      top: 0;
-      z-index: 20;
-    }
-
-    .nav {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 24px;
-      padding: 14px 0;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-weight: 700;
-      color: #fff;
-    }
-
-    .brand-mark {
-      background: var(--gold);
-      color: #111;
-      padding: 6px 9px;
-      border-radius: 8px;
-      font-weight: 800;
-      line-height: 1;
-    }
-
-    .brand small {
-      display: block;
-      color: #d6dee8;
-      font-size: 0.78rem;
-      font-weight: 600;
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 20px;
-      flex-wrap: wrap;
-      color: #e8edf5;
-      font-size: 0.95rem;
-    }
-
-    .nav-links a:hover { color: var(--gold); }
-
-    .btn {
-      display: inline-block;
-      padding: 13px 20px;
-      border-radius: 999px;
-      font-weight: 700;
-      transition: .2s ease;
-    }
-
-    .btn-primary {
-      background: var(--gold);
-      color: #111;
-    }
-
-    .btn-primary:hover { background: var(--gold-dark); }
-
-    .btn-secondary {
-      border: 1px solid rgba(255,255,255,.18);
-      color: #fff;
-      background: rgba(255,255,255,.04);
-    }
-
-    .hero {
-      padding: 34px 0 0;
-      background: linear-gradient(180deg, #071120 0%, #0a1730 100%);
-    }
-
-    .hero-panel {
-      display: grid;
-      grid-template-columns: 1.08fr 0.92fr;
-      gap: 24px;
-      align-items: center;
-      padding: 24px 0 34px;
-    }
-
-    .eyebrow {
-      display: inline-block;
-      padding: 8px 12px;
-      border-radius: 999px;
-      background: rgba(224,173,61,.16);
-      color: #ffd879;
-      font-size: .78rem;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: .08em;
-      margin-bottom: 16px;
-    }
-
-    h1 {
-      margin: 0 0 12px;
-      font-size: clamp(2.5rem, 5vw, 4.5rem);
-      line-height: .98;
-      letter-spacing: -1.3px;
-    }
-
-    .highlight { color: var(--gold); }
-
-    .lead {
-      max-width: 680px;
-      color: #d5dde8;
-      font-size: 1.08rem;
-      margin-bottom: 24px;
-    }
-
-    .hero-actions {
-      display: flex;
-      gap: 14px;
-      flex-wrap: wrap;
-    }
-
-    .hero-visual {
-      position: relative;
-      min-height: 520px;
-      border-radius: 24px;
-      overflow: hidden;
-      box-shadow: var(--shadow);
-      background: #0f1b31;
-    }
-
-    .hero-visual img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .hero-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(90deg, rgba(5,12,24,.22) 0%, rgba(5,12,24,.06) 40%, rgba(5,12,24,.05) 100%);
-    }
-
-    .metrics {
-      border-top: 1px solid rgba(255,255,255,.08);
-      border-bottom: 1px solid rgba(255,255,255,.08);
-      background: #081427;
-    }
-
-    .metrics-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 0;
-    }
-
-    .metric {
-      padding: 24px 22px;
-      border-right: 1px solid rgba(255,255,255,.08);
-    }
-
-    .metric:last-child { border-right: 0; }
-
-    .metric strong {
-      display: block;
-      color: var(--gold);
-      font-size: 1.25rem;
-      margin-bottom: 6px;
-    }
-
-    .metric span {
-      color: #d6deea;
-      font-size: .94rem;
-    }
-
-    .light-section {
-      background: #f4f1ec;
-      color: #111827;
-      padding: 72px 0;
-    }
-
-    .dark-section {
-      background: linear-gradient(180deg, #081427, #0a1730);
-      color: #fff;
-      padding: 68px 0;
-    }
-
-    .section-head {
-      margin-bottom: 28px;
-    }
-
-    .section-kicker {
-      color: var(--gold-dark);
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: .08em;
-      font-size: .8rem;
-      margin-bottom: 8px;
-      display: inline-block;
-    }
-
-    h2 {
-      margin: 0 0 10px;
-      font-size: clamp(2rem, 4vw, 3.1rem);
-      line-height: 1.02;
-      letter-spacing: -.8px;
-    }
-
-    .section-sub {
-      max-width: 780px;
-      color: #4b5563;
-    }
-
-    .dark-section .section-sub { color: #d9e2ee; }
-
-    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
-    .grid-3 { display: grid; grid-template-columns: repeat(3,1fr); gap: 22px; }
-    .grid-4 { display: grid; grid-template-columns: repeat(4,1fr); gap: 20px; }
-
-    .card {
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-    }
-
-    .card-light {
-      background: #fff;
-      padding: 26px;
-      border: 1px solid rgba(17,24,39,.06);
-    }
-
-    .card-dark {
-      background: rgba(255,255,255,.04);
-      border: 1px solid rgba(255,255,255,.08);
-      padding: 24px;
-    }
-
-    .who-wrap {
-      align-items: center;
-    }
-
-    .quote-sign {
-      margin-top: 20px;
-      font-style: italic;
-      font-weight: 700;
-      font-size: 1.1rem;
-    }
-
-    .image-card {
-      overflow: hidden;
-      border-radius: 24px;
-      box-shadow: var(--shadow);
-      background: #fff;
-    }
-
-    .image-card img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      min-height: 360px;
-    }
-
-    .service-card h3,
-    .partner-card h3,
-    .study-card h3,
-    .blog-card h3 {
-      margin-top: 0;
-      margin-bottom: 10px;
-    }
-
-    .service-card p,
-    .partner-card p,
-    .study-card p,
-    .blog-card p,
-    .card-light p,
-    .card-dark p {
-      margin: 0;
-      color: #4b5563;
-    }
-
-    .dark-section .card-dark p,
-    .dark-section .partner-card p { color: #d5deea; }
-
-    .steps-row {
-      display: grid;
-      grid-template-columns: 1.15fr repeat(4, 1fr);
-      gap: 24px;
-      align-items: start;
-    }
-
-    .step-box {
-      color: #fff;
-    }
-
-    .step-box .n {
-      color: var(--gold);
-      font-size: 2rem;
-      font-weight: 800;
-      margin-bottom: 10px;
-      display: block;
-    }
-
-    .step-box h3 {
-      margin: 0 0 8px;
-      font-size: 1.05rem;
-    }
-
-    .step-box p { color: #d6dfeb; margin: 0; }
-
-    .case-grid {
-      display: grid;
-      grid-template-columns: 1.05fr 1fr 1fr 1fr;
-      gap: 22px;
-      align-items: stretch;
-    }
-
-    .case-main {
-      padding: 4px 0;
-    }
-
-    .case-main p { color: #4b5563; max-width: 520px; }
-
-    .study-card {
-      background: #fff;
-      padding: 22px;
-      border-radius: 20px;
-      border: 1px solid rgba(17,24,39,.06);
-      box-shadow: 0 10px 30px rgba(0,0,0,.08);
-    }
-
-    .tag {
-      display: inline-block;
-      padding: 6px 10px;
-      border-radius: 999px;
-      background: #f7ebc8;
-      color: #806017;
-      font-size: .75rem;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: .05em;
-      margin-bottom: 12px;
-    }
-
-    .study-kpi {
-      font-size: 2rem;
-      font-weight: 800;
-      line-height: 1;
-      margin-bottom: 8px;
-      color: #111827;
-    }
-
-    .partner-band {
-      background: linear-gradient(180deg, #081427 0%, #09162a 100%);
-      color: #fff;
-      padding: 68px 0;
-    }
-
-    .partner-layout {
-      display: grid;
-      grid-template-columns: 1.1fr 1fr 1fr;
-      gap: 22px;
-      align-items: start;
-    }
-
-    .partner-intro p { color: #d6deea; }
-
-    .partner-card {
-      background: rgba(255,255,255,.04);
-      border: 1px solid rgba(255,255,255,.08);
-      border-radius: 20px;
-      padding: 20px;
-    }
-
-    .partner-top {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      margin-bottom: 14px;
-    }
-
-    .partner-top img {
-      width: 72px;
-      height: 72px;
-      object-fit: cover;
-      border-radius: 50%;
-      border: 3px solid rgba(255,255,255,.08);
-    }
-
-    .mini-link {
-      display: inline-block;
-      margin-top: 14px;
-      color: var(--gold);
-      font-weight: 700;
-    }
-
-    .blog-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 22px;
-    }
-
-    .blog-card {
-      background: #fff;
-      border-radius: 20px;
-      overflow: hidden;
-      box-shadow: 0 10px 30px rgba(0,0,0,.08);
-      border: 1px solid rgba(17,24,39,.06);
-    }
-
-    .blog-card img {
-      width: 100%;
-      height: 190px;
-      object-fit: cover;
-    }
-
-    .blog-card .content {
-      padding: 20px;
-    }
-
-    .cta-section {
-      background: linear-gradient(90deg, #081427 0%, #0a1730 100%);
-      color: #fff;
-      padding: 64px 0;
-    }
-
-    .cta-box {
-      display: grid;
-      grid-template-columns: 1.1fr .9fr;
-      gap: 26px;
-      align-items: center;
-    }
-
-    .cta-media {
-      border-radius: 24px;
-      overflow: hidden;
-      box-shadow: var(--shadow);
-    }
-
-    .cta-media img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      min-height: 290px;
-    }
-
-    .footer {
-      background: #071120;
-      color: #cdd7e4;
-      padding: 26px 0;
-      font-size: .92rem;
-      border-top: 1px solid rgba(255,255,255,.06);
-    }
-
-    @media (max-width: 1080px) {
-      .hero-panel,
-      .grid-2,
-      .steps-row,
-      .case-grid,
-      .partner-layout,
-      .cta-box,
-      .grid-3,
-      .blog-grid,
-      .metrics-grid { grid-template-columns: 1fr; }
-
-      .metric { border-right: 0; border-bottom: 1px solid rgba(255,255,255,.08); }
-      .metric:last-child { border-bottom: 0; }
-    }
-
-    @media (max-width: 760px) {
-      .nav { flex-direction: column; align-items: flex-start; }
-      .nav-links { gap: 12px; }
-      .hero { padding-top: 20px; }
-      h1 { font-size: 2.4rem; }
-      .hero-visual { min-height: 360px; }
-    }
-  </style>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="favicon.ico" sizes="any" />
+  <link rel="icon" href="favicon-32.png" type="image/png" sizes="32x32" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" sizes="180x180" />
+  <meta name="theme-color" content="#071120" />
+  <link rel="canonical" href="https://www.marcosansone.com/" />
+  <meta property="og:title" content="Marco Sansone | Coach Pubblicitario" />
+  <meta property="og:description" content="Costruisco sistemi pubblicitari che portano clienti, ordine e crescita." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.marcosansone.com/" />
+  <meta property="og:image" content="https://www.marcosansone.com/og-image.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Marco Sansone, Coach Pubblicitario" />
+  <meta property="og:locale" content="it_IT" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Marco Sansone | Coach Pubblicitario" />
+  <meta name="twitter:description" content="Costruisco sistemi pubblicitari che portano clienti, ordine e crescita." />
+  <meta name="twitter:image" content="https://www.marcosansone.com/og-image.jpg" />
+  <meta name="twitter:image:alt" content="Marco Sansone, Coach Pubblicitario" />
+  <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https://www.marcosansone.com/#marco-sansone",
+      "name": "Marco Sansone",
+      "jobTitle": "Coach Pubblicitario",
+      "url": "https://www.marcosansone.com/",
+      "image": "https://www.marcosansone.com/hero-v1.webp",
+      "email": "info@marcosansone.com",
+      "telephone": "+393396825133",
+      "vatID": "IT06063300658",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Ercolano",
+        "addressRegion": "NA",
+        "addressCountry": "IT"
+      },
+      "sameAs": [
+        "https://www.facebook.com/marco.sansone.x",
+        "https://www.instagram.com/coach_pubblicitario/",
+        "https://www.tiktok.com/@marcosansone90"
+      ],
+      "knowsAbout": [
+        "pubblicità online",
+        "lead generation",
+        "KPI",
+        "funnel di vendita"
+      ]
+    },
+    {
+      "@type": "ProfessionalService",
+      "@id": "https://www.marcosansone.com/#attivita",
+      "name": "Marco Sansone",
+      "legalName": "Sansone Marco",
+      "url": "https://www.marcosansone.com/",
+      "image": "https://www.marcosansone.com/hero-v1.webp",
+      "email": "info@marcosansone.com",
+      "telephone": "+393396825133",
+      "vatID": "IT06063300658",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Ercolano",
+        "addressRegion": "NA",
+        "addressCountry": "IT"
+      },
+      "sameAs": [
+        "https://www.facebook.com/marco.sansone.x",
+        "https://www.instagram.com/coach_pubblicitario/",
+        "https://www.tiktok.com/@marcosansone90"
+      ],
+      "founder": {
+        "@id": "https://www.marcosansone.com/#marco-sansone"
+      },
+      "knowsAbout": [
+        "pubblicità online",
+        "lead generation",
+        "KPI",
+        "funnel di vendita"
+      ]
+    }
+  ]
+}</script>
 </head>
 <body>
-  <div class="site-shell">
-    <header class="topbar">
+  <header class="topbar">
       <div class="container nav">
-        <div class="brand">
+        <a class="brand" href="#home" aria-label="Marco Sansone, home">
           <span class="brand-mark">MS</span>
           <div>
             Marco Sansone
             <small>Coach Pubblicitario</small>
           </div>
-        </div>
-        <nav class="nav-links">
+        </a>
+        <nav class="nav-links" aria-label="Menu principale">
           <a href="#home">Home</a>
           <a href="#chi-sono">Chi sono</a>
           <a href="#servizi">Servizi</a>
           <a href="#metodo">Metodo</a>
           <a href="#casi-studio">Casi studio</a>
           <a href="#partner">Partner</a>
-          <a href="https://calendar.app.google/18FPP7MGoMMRws576" target="_blank">Contatti</a>
-          <a href="https://calendar.app.google/18FPP7MGoMMRws576" target="_blank" class="btn btn-primary">Analizziamo il tuo sistema</a>
+          <a href="#contatti">Contatti</a>
+          <a href="https://calendar.app.google/18FPP7MGoMMRws576" target="_blank" rel="noopener" class="btn btn-primary">Analizziamo il tuo sistema</a>
         </nav>
       </div>
     </header>
+
+  <main>
+  <div class="site-shell">
 
     <section class="hero" id="home">
       <div class="container hero-panel">
@@ -551,12 +126,12 @@
             Aiuto imprenditori e professionisti a smettere di sprecare budget e a costruire un sistema commerciale più chiaro, misurabile e profittevole. Ti affianco come coach e, quando serve, attivo anche la parte operativa per far funzionare davvero il sistema.
           </p>
           <div class="hero-actions">
-            <a href="https://calendar.app.google/18FPP7MGoMMRws576" target="_blank" class="btn btn-primary">Analizziamo il tuo sistema in 30 minuti</a>
+            <a href="https://calendar.app.google/18FPP7MGoMMRws576" target="_blank" rel="noopener" class="btn btn-primary">Analizziamo il tuo sistema in 30 minuti</a>
             <a href="#metodo" class="btn btn-secondary">Scopri il metodo</a>
           </div>
         </div>
         <div class="hero-visual">
-          <img src="hero.png" alt="Marco Sansone coach pubblicitario" />
+          <img src="hero-v1.webp" alt="Marco Sansone, coach pubblicitario" width="1400" height="933" fetchpriority="high" decoding="async" />
           <div class="hero-overlay"></div>
         </div>
       </div>
@@ -598,7 +173,7 @@
         <div class="quote-sign">Marco Sansone</div>
       </div>
       <div class="image-card">
-        <img src="formazione.jpg" alt="Marco Sansone in formazione" />
+        <img src="formazione-v1.webp" alt="Marco Sansone durante una sessione di formazione" width="548" height="432" loading="lazy" decoding="async" />
       </div>
     </div>
   </section>
@@ -706,7 +281,7 @@
       <p style="margin-bottom:15px; font-weight:600;">
         Lavoro sempre più spesso con medici e professionisti sanitari che vogliono più pazienti e un sistema organizzato.
       </p>
-      <a href="https://calendar.app.google/18FPP7MGoMMRws576" target="_blank" class="btn btn-primary">Prenota un confronto per il tuo studio o la tua struttura</a>
+      <a href="https://calendar.app.google/18FPP7MGoMMRws576" target="_blank" rel="noopener" class="btn btn-primary">Prenota un confronto per il tuo studio o la tua struttura</a>
     </div>
 
     <!-- BLOCCO TRASVERSALE (30%) -->
@@ -747,11 +322,11 @@
         <span class="section-kicker" style="color:#ffd879;">Partner</span>
         <h2>Professionisti selezionati. <span class="highlight">Risultati condivisi.</span></h2>
         <p>Quando serve, attivo direttamente le persone giuste per costruire o migliorare il tuo sistema. Partner selezionati che condividono il mio standard: meno confusione, più direzione, più controllo. Resti seguito da un unico riferimento con competenze specifiche integrate nel sistema.</p>
-        <a href="https://calendar.app.google/18FPP7MGoMMRws576" target="_blank" class="btn btn-secondary" style="margin-top:16px;">Scopri come lavoriamo</a>
+        <a href="https://calendar.app.google/18FPP7MGoMMRws576" target="_blank" rel="noopener" class="btn btn-secondary" style="margin-top:16px;">Scopri come lavoriamo</a>
       </div>
       <div class="partner-card">
         <div class="partner-top">
-          <img src="hero.png" alt="Partner area performance" />
+          <img src="hero-card-v1.webp" alt="" width="800" height="533" loading="lazy" decoding="async" />
           <div>
             <strong>Creazione e gestione sistemi di vendita</strong><br>
             <small>Siti, funnel, e-commerce</small>
@@ -762,7 +337,7 @@
       </div>
       <div class="partner-card">
         <div class="partner-top">
-          <img src="formazione.jpg" alt="Partner area crescita" />
+          <img src="formazione-v1.webp" alt="" width="548" height="432" loading="lazy" decoding="async" />
           <div>
             <strong>Visibilità e presenza online</strong><br>
             <small>SEO e GEO</small>
@@ -785,17 +360,22 @@
         <p class="section-sub" style="color:#d8e2ee;">
           Analizziamolo insieme in 30 minuti e capiamo dove stai perdendo tempo, margine o opportunità. Poi decidiamo se e come intervenire.
         </p>
-        <a href="https://calendar.app.google/18FPP7MGoMMRws576" target="_blank" class="btn btn-primary">Analizziamo il tuo sistema in 30 minuti</a>
+        <a href="https://calendar.app.google/18FPP7MGoMMRws576" target="_blank" rel="noopener" class="btn btn-primary">Analizziamo il tuo sistema in 30 minuti</a>
+<div class="contact-details"><a href="mailto:info@marcosansone.com">info@marcosansone.com</a><a href="tel:+393396825133">+39 339 682 5133</a></div><div class="social-links" aria-label="Profili social"><a href="https://www.facebook.com/marco.sansone.x" target="_blank" rel="me noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 1 0 0 20v-7h-2v-3h2V9c0-3 2-4 4-4h2v3h-2c-1 0-1 1-1 1v3h3l-1 3h-2v7A10 10 0 0 0 12 2z"/></svg>Facebook</a><a href="https://www.instagram.com/coach_pubblicitario/" target="_blank" rel="me noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7zm5 3a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6zm6-4a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/></svg>Instagram</a><a href="https://www.tiktok.com/@marcosansone90" target="_blank" rel="me noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2h3c0 3 2 5 5 5v3c-2 0-4-1-5-2v8a6 6 0 1 1-6-6v3a3 3 0 1 0 3 3V2z"/></svg>TikTok</a></div>
       </div>
       <div class="cta-media">
-        <img src="hero.png" alt="Marco Sansone consulenza strategica" />
+        <img src="hero-card-v1.webp" alt="Marco Sansone per una consulenza sul sistema pubblicitario" width="800" height="533" loading="lazy" decoding="async" />
       </div>
     </div>
   </section>
 
+  </main>
   <footer class="footer">
     <div class="container">
-      Marco Sansone — Coach Pubblicitario · Strategia, struttura, acquisizione clienti e supporto operativo quando serve.
+      <p><strong>Marco Sansone, Coach Pubblicitario</strong></p>
+      <p>Sansone Marco, ditta individuale · Ercolano (NA) · P.IVA 06063300658</p>
+      <div class="contact-details"><a href="mailto:info@marcosansone.com">info@marcosansone.com</a><a href="tel:+393396825133">+39 339 682 5133</a></div><div class="social-links" aria-label="Profili social"><a href="https://www.facebook.com/marco.sansone.x" target="_blank" rel="me noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 1 0 0 20v-7h-2v-3h2V9c0-3 2-4 4-4h2v3h-2c-1 0-1 1-1 1v3h3l-1 3h-2v7A10 10 0 0 0 12 2z"/></svg>Facebook</a><a href="https://www.instagram.com/coach_pubblicitario/" target="_blank" rel="me noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7zm5 3a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6zm6-4a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/></svg>Instagram</a><a href="https://www.tiktok.com/@marcosansone90" target="_blank" rel="me noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2h3c0 3 2 5 5 5v3c-2 0-4-1-5-2v8a6 6 0 1 1-6-6v3a3 3 0 1 0 3 3V2z"/></svg>TikTok</a></div>
+      <div class="footer-links"><a href="privacy-policy.html">Privacy Policy</a><a href="cookie-policy.html">Cookie Policy</a></div>
     </div>
   </footer>
   <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2d155eff285048578e38b31416769ad2"}'></script><!-- End Cloudflare Web Analytics -->
